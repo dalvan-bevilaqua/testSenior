@@ -8,7 +8,8 @@ Tecnologias mínimas que devem ser utilizadas:
 • Bean Validation
 • QueryDSL
 • REST com JSON
-Requisitos da prova:
+
+#Requisitos da prova:
 • Deverá ser desenvolvido um cadastro (Create/Read/Update/Delete/List com paginação)
 para as seguintes entidades: produto/serviço, pedido e itens de pedido.
 • Deverá ser possível aplicar filtros na listagem
@@ -24,7 +25,7 @@ itens que sejam produto (não serviço); o desconto será sobre o valor total do
 (Fechado bloqueia)
 • Não deve ser possível excluir um produto/serviço se ele estiver associado a algum pedido
 • Não deve ser possível adicionar um produto desativado em um pedido
-Critérios de aceitação
+#Critérios de aceitação
 • A prova deverá ser entregue completa (todos os itens resolvidos)
 • Deverão ser criados testes automatizados
 • O código não poderá ter erros de compilação
