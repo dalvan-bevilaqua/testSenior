@@ -14,12 +14,12 @@ services:
     ports:
       - 54320:5432
 
-  #micro_cliente:
-  #  build: micro_cliente
-  #  hostname: micro_cliente
-  #  container_name: "micro_cliente"
+  #micro_produto:
+  #  build: ./
+  #  hostname: micro_produto
+  #  container_name: "micro_produto"
   #  restart: always
   #  ports:
-  #    - 8081:8081
+  #    - 8085:8080
   #  links:
   #    - postgres

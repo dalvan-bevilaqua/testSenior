@@ -1,12 +1,16 @@
 package com.test.senior.modules.produto.entity;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.UUID;
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,11 +23,16 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-public class Produto {
+public class Produto implements Serializable {
 
-  @Id private UUID id;
+  private static final long serialVersionUID = 1973285998638454347L;
 
-  @ManyToOne
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  @Column(name = "id")
+  private UUID id;
+
+  @OneToOne
   @JoinColumn(name = "id_tipo")
   private ProdutoTipo produtoTipo;
 
