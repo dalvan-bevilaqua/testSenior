@@ -37,10 +37,9 @@ public class ProdutoController {
   }
 
   @PutMapping("/{idProduto}")
-  public void update(@PathVariable UUID idProduto, CreateProdutoDto dto){
+  public void update(@PathVariable UUID idProduto, CreateProdutoDto dto) {
     produtoService.update(idProduto, dto);
   }
-
 
   @GetMapping
   public Page<ProdutoDto> findAll(ProdutoFilter filter, Pageable pageable) {

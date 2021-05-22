@@ -32,7 +32,7 @@ public class ProdutoRepositoryCustomImpl extends QuerydslRepositorySupport
     Optional.ofNullable(filter.getNome()).ifPresent(nome -> query.where(qproduto.nome.eq(nome)));
 
     Optional.ofNullable(filter.getTipo())
-        .ifPresent(tipo -> query.where(qproduto.produtoTipo.nmTipo.eq(tipo)));
+        .ifPresent(tipo -> query.where(qproduto.produtoTipo.tipo.eq(tipo)));
 
     if (Objects.nonNull(filter.getDtCadastroInicial())
         && Objects.nonNull(filter.getDtCadastroFinal())) {

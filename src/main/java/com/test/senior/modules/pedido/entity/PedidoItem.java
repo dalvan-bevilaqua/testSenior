@@ -1,8 +1,9 @@
-package com.test.senior.modules.produto.entity;
+package com.test.senior.modules.pedido.entity;
 
+import com.test.senior.modules.produto.entity.Produto;
+import com.test.senior.modules.produto.entity.ProdutoTipo;
 import java.io.Serializable;
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -24,10 +25,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @Builder
 @Entity
-@Table(name = "produto")
-public class Produto implements Serializable {
-
-  private static final long serialVersionUID = 1973285998638454347L;
+@Table(name = "pedido_item")
+public class PedidoItem implements Serializable {
+  private static final long serialVersionUID = -6138460696413055594L;
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -35,11 +35,17 @@ public class Produto implements Serializable {
   private UUID id;
 
   @OneToOne
+  @JoinColumn(name = "id_produto")
+  private Produto produto;
+
+  @OneToOne
   @JoinColumn(name = "id_tipo")
   private ProdutoTipo produtoTipo;
 
-  private String nome;
-  private String descricao;
-  private BigDecimal valor;
-  private Date dtCadastro;
+  @OneToOne
+  @JoinColumn(name = "id_pedido")
+  private Pedido pedido;
+
+  private BigDecimal qtProduto;
+  private BigDecimal vlProduto;
 }
