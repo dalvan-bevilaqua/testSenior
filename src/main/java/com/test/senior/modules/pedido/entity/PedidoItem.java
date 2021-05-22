@@ -48,4 +48,5 @@ public class PedidoItem implements Serializable {
 
   private BigDecimal qtProduto;
   private BigDecimal vlProduto;
+  private BigDecimal vlDesconto;
 }

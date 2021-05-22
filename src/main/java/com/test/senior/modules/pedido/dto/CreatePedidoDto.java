@@ -14,5 +14,5 @@ import lombok.NoArgsConstructor;
 public class CreatePedidoDto implements Serializable {
   private static final long serialVersionUID = -1283769300896947182L;
   String descricao;
-  List<PedidoItemDto> pedidoItemDtoList;
+  List<PedidoItemDto> pedidoItemList;
 }

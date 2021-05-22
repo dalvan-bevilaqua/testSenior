@@ -1,0 +1,1 @@
+ALTER TABLE pedido_item ADD COLUMN vl_desconto DECIMAL(8,2)

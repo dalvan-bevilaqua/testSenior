@@ -3,6 +3,7 @@ package com.test.senior.modules.pedido.dto;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 import java.util.UUID;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,4 +23,5 @@ public class PedidoDto implements Serializable {
   private String descricao;
   private Date dtCadastro;
   private BigDecimal perDesc;
+  private List<PedidoItemDto> pedidoItemDtoList;
 }
