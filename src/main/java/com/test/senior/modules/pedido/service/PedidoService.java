@@ -5,13 +5,14 @@ import com.test.senior.modules.pedido.dto.PedidoDto;
 import com.test.senior.modules.pedido.dto.PedidoFilter;
 import java.math.BigDecimal;
 import java.util.UUID;
+import javax.validation.Valid;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 public interface PedidoService {
   PedidoDto findById(UUID idPedido);
 
-  PedidoDto create(CreatePedidoDto dto);
+  PedidoDto create(@Valid CreatePedidoDto dto);
 
   void finalizarPedido(UUID idPedido);
 

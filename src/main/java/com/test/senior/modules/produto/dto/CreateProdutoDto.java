@@ -28,4 +28,6 @@ public class CreateProdutoDto implements Serializable {
 
   @NotNull(message = "{valor.not_null}")
   private BigDecimal valor;
+
+  private String isAtivo;
 }

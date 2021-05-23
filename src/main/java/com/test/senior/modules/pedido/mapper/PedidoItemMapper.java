@@ -10,6 +10,7 @@ public interface PedidoItemMapper {
 
   @Mapping(target = "idProduto", source = "produto.id")
   @Mapping(target = "idPedido", source = "pedido.id")
+  @Mapping(target = "nome", source = "produto.nome")
   PedidoItemDto toPedidoItemDto(PedidoItem pedidoItem);
 
   @Mapping(target = "produto.id", source = "idProduto")

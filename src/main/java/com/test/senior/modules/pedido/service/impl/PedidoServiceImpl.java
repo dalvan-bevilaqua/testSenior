@@ -20,14 +20,17 @@ import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 import java.util.stream.Collectors;
+import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.util.CollectionUtils;
+import org.springframework.validation.annotation.Validated;
 
 @Service
 @RequiredArgsConstructor
+@Validated
 public class PedidoServiceImpl implements PedidoService {
 
   private final PedidoRepository pedidoRepository;
@@ -44,7 +47,7 @@ public class PedidoServiceImpl implements PedidoService {
   }
 
   @Override
-  public PedidoDto create(CreatePedidoDto dto) {
+  public PedidoDto create(@Valid CreatePedidoDto dto) {
     var situacao = pedidoSituacaoRepository.findBySituacao(SituacaoPedido.ABERTO.name());
     var pedido =
         Pedido.builder()

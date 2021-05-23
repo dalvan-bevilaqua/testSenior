@@ -15,5 +15,5 @@ public class CreatePedidoDto implements Serializable {
   private static final long serialVersionUID = -1283769300896947182L;
 
   @NotNull(message = "{descricao.not_null}")
-  String descricao;
+  private String descricao;
 }

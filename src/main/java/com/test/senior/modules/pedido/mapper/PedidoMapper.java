@@ -3,6 +3,7 @@ package com.test.senior.modules.pedido.mapper;
 import com.test.senior.modules.pedido.dto.PedidoDto;
 import com.test.senior.modules.pedido.dto.PedidoItemDto;
 import com.test.senior.modules.pedido.entity.Pedido;
+import java.util.Objects;
 import java.util.stream.Collectors;
 import org.mapstruct.Mapper;
 
@@ -17,20 +18,22 @@ public interface PedidoMapper {
         .perDesc(pedido.getPerDesc())
         .vlPedido(pedido.getVlPedido())
         .dtCadastro(pedido.getDtCadastro())
-        .pedidoItemDtoList(
-            pedido.getPedidoItens().stream()
-                .map(
-                    item ->
-                        PedidoItemDto.builder()
-                            .id(item.getId())
-                            .idPedido(item.getPedido().getId())
-                            .qtProduto(item.getQtProduto())
-                            .vlProduto(item.getVlProduto())
-                            .idProduto(item.getProduto().getId())
-                            .nome(item.getProduto().getNome())
-                            .build())
-                .collect(Collectors.toList()))
         .descricao(pedido.getDescricao())
+        .pedidoItemDtoList(
+            Objects.isNull(pedido.getPedidoItens())
+                ? null
+                : pedido.getPedidoItens().stream()
+                    .map(
+                        item ->
+                            PedidoItemDto.builder()
+                                .id(item.getId())
+                                .idPedido(item.getPedido().getId())
+                                .qtProduto(item.getQtProduto())
+                                .vlProduto(item.getVlProduto())
+                                .idProduto(item.getProduto().getId())
+                                .nome(item.getProduto().getNome())
+                                .build())
+                    .collect(Collectors.toList()))
         .build();
   }
 }

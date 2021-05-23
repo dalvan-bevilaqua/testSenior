@@ -4,8 +4,10 @@ import com.test.senior.modules.produto.dto.ProdutoFilter;
 import com.test.senior.modules.produto.entity.Produto;
 import com.test.senior.modules.produto.entity.QProduto;
 import com.test.senior.modules.produto.repository.ProdutoRepositoryCustom;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
+import java.util.UUID;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.support.QuerydslRepositorySupport;
@@ -46,5 +48,12 @@ public class ProdutoRepositoryCustomImpl extends QuerydslRepositorySupport
     var queryResults = super.getQuerydsl().applyPagination(pageable, query).fetchResults();
     return PageableExecutionUtils.getPage(
         queryResults.getResults(), pageable, queryResults::getTotal);
+  }
+
+  @Override
+  public boolean findByIdInAndStatusIsDisabled(List<UUID> listIds) {
+    var qProduto = QProduto.produto;
+    var query = from(qProduto).where(qProduto.produto.id.in(listIds).and(qProduto.isAtivo.eq("N")));
+    return Objects.nonNull(query.fetchOne());
   }
 }
