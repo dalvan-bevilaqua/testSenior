@@ -31,7 +31,7 @@ public class PedidoItemController {
     return pedidoItemService.createItens(dto);
   }
 
-  @DeleteMapping("/{idPedido}/delete")
+  @DeleteMapping("/{idItem}/delete")
   @ResponseStatus(HttpStatus.OK)
   public void deleteById(@PathVariable UUID idItem) {
     pedidoItemService.deleteById(idItem);
