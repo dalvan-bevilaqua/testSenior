@@ -15,8 +15,10 @@ import lombok.NoArgsConstructor;
 public class PedidoItemDto implements Serializable {
   private static final long serialVersionUID = -2357602730976161986L;
 
-  private UUID idProduto;
+  private UUID id;
   private UUID idPedido;
+  private UUID idProduto;
+  private String nome;
   private BigDecimal qtProduto;
   private BigDecimal vlProduto;
 }

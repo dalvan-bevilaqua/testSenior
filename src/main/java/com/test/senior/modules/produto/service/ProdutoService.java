@@ -10,7 +10,7 @@ import org.springframework.data.domain.Pageable;
 
 public interface ProdutoService {
 
-  ProdutoDto findByid(UUID idProduto);
+  ProdutoDto findById(UUID idProduto);
 
   Page<ProdutoDto> findAll(ProdutoFilter filter, Pageable pageable);
 

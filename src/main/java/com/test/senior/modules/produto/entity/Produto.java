@@ -42,4 +42,5 @@ public class Produto implements Serializable {
   private String descricao;
   private BigDecimal valor;
   private Date dtCadastro;
+  private String isAtivo;
 }

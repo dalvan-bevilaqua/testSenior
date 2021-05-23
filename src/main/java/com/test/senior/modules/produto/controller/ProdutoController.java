@@ -28,7 +28,7 @@ public class ProdutoController {
 
   @GetMapping("/{idProduto}")
   public ProdutoDto findById(@PathVariable UUID idProduto) {
-    return produtoService.findByid(idProduto);
+    return produtoService.findById(idProduto);
   }
 
   @PostMapping

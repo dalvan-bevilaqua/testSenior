@@ -16,10 +16,11 @@ import lombok.NoArgsConstructor;
 public class PedidoFilter implements Serializable {
   private static final long serialVersionUID = -8773803474363838352L;
 
+  private UUID id;
   private UUID idSituacao;
   private String situacao;
   private String descricao;
   private Date dtCadastroInicial;
-  private Date getDtCadastroFinal;
+  private Date dtCadastroFinal;
   private BigDecimal perDesc;
 }

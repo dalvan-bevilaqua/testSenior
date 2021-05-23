@@ -1,6 +1,9 @@
 package com.test.senior.modules.produto.service.impl;
 
 import com.test.senior.exception.RecordNotFoundException;
+import com.test.senior.handler.BusinessException;
+import com.test.senior.helper.i18n.Translator;
+import com.test.senior.modules.pedido.service.PedidoItemService;
 import com.test.senior.modules.produto.dto.CreateProdutoDto;
 import com.test.senior.modules.produto.dto.ProdutoDto;
 import com.test.senior.modules.produto.dto.ProdutoFilter;
@@ -25,9 +28,11 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 public class ProdutoServiceImpl implements ProdutoService {
   private final ProdutoRepository produtoRepository;
   private final ProdutoMapper produtoMapper;
+  private final PedidoItemService pedidoItemService;
+  private final Translator translator;
 
   @Override
-  public ProdutoDto findByid(UUID idProduto) {
+  public ProdutoDto findById(UUID idProduto) {
     var produto = produtoRepository.findById(idProduto).orElseThrow(RecordNotFoundException::new);
     return produtoMapper.toProdutoDto(produto);
   }
@@ -40,6 +45,7 @@ public class ProdutoServiceImpl implements ProdutoService {
 
   @Override
   public void deleteById(UUID idProduto) {
+    validaSeExistemProdutosEmPedido(idProduto);
     produtoRepository.deleteById(idProduto);
   }
 
@@ -59,5 +65,13 @@ public class ProdutoServiceImpl implements ProdutoService {
     produto.setId(idProduto);
 
     produtoRepository.save(produto);
+  }
+
+  private void validaSeExistemProdutosEmPedido(UUID idProduto) {
+    var existsInPedido = pedidoItemService.existsItemInPedido(idProduto);
+
+    if (existsInPedido) {
+      throw new BusinessException(translator.get("nao.eh.possivel.deletar.produto.em.pedido"));
+    }
   }
 }

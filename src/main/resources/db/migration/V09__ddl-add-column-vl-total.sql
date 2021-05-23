@@ -1,0 +1,1 @@
+ALTER TABLE pedido_item ADD COLUMN vl_total DECIMAL(8,2) DEFAULT 0;

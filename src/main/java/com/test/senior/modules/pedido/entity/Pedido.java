@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -46,4 +47,6 @@ public class Pedido implements Serializable {
   private String descricao;
   private Date dtCadastro;
   private BigDecimal perDesc;
+
+  @Transient private BigDecimal vlPedido;
 }

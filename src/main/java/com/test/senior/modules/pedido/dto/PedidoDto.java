@@ -23,5 +23,6 @@ public class PedidoDto implements Serializable {
   private String descricao;
   private Date dtCadastro;
   private BigDecimal perDesc;
+  private BigDecimal vlPedido;
   private List<PedidoItemDto> pedidoItemDtoList;
 }

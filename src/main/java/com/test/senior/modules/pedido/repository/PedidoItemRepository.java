@@ -6,5 +6,7 @@ import java.util.UUID;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 
-public interface PedidoItemRepository extends JpaRepository<PedidoItem, UUID>,
-    QuerydslPredicateExecutor<Pedido> {}
+public interface PedidoItemRepository
+    extends JpaRepository<PedidoItem, UUID>,
+        QuerydslPredicateExecutor<Pedido>,
+        PedidoItemRepositoryCustom {}

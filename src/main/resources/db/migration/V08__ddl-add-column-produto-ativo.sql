@@ -1,0 +1,1 @@
+ALTER TABLE produto ADD COLUMN is_ativo char(1) DEFAULT('S') CHECK (is_ativo IN ('S', 'N'))
